@@ -24,6 +24,7 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
+
 // Rotas sem autenticação
 Route::get('/home', function () { return Inertia::render('Home'); })->name('home');
 Route::get('/abrirChamado', [AbrirChamado::class, 'index'])->name('abrirChamado');
