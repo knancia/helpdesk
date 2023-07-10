@@ -1,0 +1,38 @@
+<?php
+
+use App\Models\FormService;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('form_service', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        $formService = [
+            ['name' => 'Solicitar Ajuda'],
+            ['name' => 'Reportar BUG'],
+        ];
+
+        foreach ($formService as $service) {
+            FormService::create($service);
+        }
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('form_service');
+    }
+};
